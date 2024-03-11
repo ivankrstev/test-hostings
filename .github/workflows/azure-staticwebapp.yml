@@ -14,10 +14,10 @@ name: Deploy web app to Azure Static Web Apps
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
     types: [opened, synchronize, reopened, closed]
-    branches: [ "master" ]
+    branches: ["master"]
 
 # Environment variables available to all jobs and steps in this workflow
 env:
@@ -45,15 +45,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 'latest'
+          node-version: "latest"
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./
+        working-directory: ./client/
 
       - name: Build Next.js app
         run: npm run build
-        working-directory: ./
+        working-directory: ./client/
 
       - name: Build And Deploy
         id: builddeploy
